@@ -1,103 +1,106 @@
+# TLD GitHub Commits Weekly Analyzer
 
-# Project Title
+## 1. Project Overview
 
-A brief description of what this project does and who it's for
+### 1.1 Purpose
+This project was developed as part of a technical interview exercise.  
+Its purpose is to demonstrate the ability to consume a third-party REST API, process and transform data, and expose a clean JSON endpoint using Laravel.
 
-TLD GitHub Commits Weekly Analyzer (Laravel)
-Description
+### 1.2 Scope
+The application focuses on retrieving commits from public GitHub repositories and grouping them by calendar week within a given date range.
 
-This project is a Laravel application developed as part of a technical interview test.
-It retrieves commits from the GitHub REST API for a given public repository and groups them by calendar week within a specified date range.
+---
 
-The application exposes a single HTTP endpoint that returns commit data in JSON format, including the number of commits and the list of commits for each week.
+## 2. Description
 
-Features
+### 2.1 What the Application Does
+The application fetches commits from the GitHub REST API for a specified repository and groups them by ISO calendar week, returning both the total number of commits and the commit details for each week.
 
-Fetch commits from public GitHub repositories
+### 2.2 Key Objectives
+- Consume the GitHub REST API  
+- Apply date filtering using query parameters  
+- Group data by calendar week  
+- Return structured JSON responses  
+- Follow clean and testable Laravel architecture  
 
-Filter commits by date range (since, until)
+---
 
-Default date range: last 4 weeks
+## 3. Badges
 
-Group commits by ISO calendar week
+### 3.1 Status Badges
+No badges are included in this repository.  
+This project is intended for interview evaluation purposes only and not for public open-source distribution.
 
-JSON API response
+---
 
-Clean architecture with separated business logic
+## 4. Visuals
 
-Unit and feature tests
+### 4.1 User Interface
+This project does not include a graphical user interface.  
+All interactions are performed through HTTP requests, and responses are returned in JSON format.
 
-Tech Stack
+---
 
-PHP >= 8.1
+## 5. Installation
 
-Laravel (latest stable version)
+### 5.1 Requirements
+- PHP 8.1 or higher  
+- Composer  
+- Laravel (latest stable version)  
+- Internet connection (for GitHub API access)
 
-Laravel HTTP Client (Guzzle)
-
-PHPUnit
-
-Installation
-1. Clone the repository
-git clone <repository-url>
-cd <project-folder>
-
-2. Install dependencies
+### 5.2 Setup Steps
+1. Clone the repository:  
+```bash
+git clone https://github.com/kaushal234/TLDGroup.git
+cd TLDGroup
+```
+2. Install dependencies:  
+```bash
 composer install
+```
 
-3. Environment setup
-cp .env.example .env
-php artisan key:generate
+---
 
+## 6. Usage
 
-No GitHub authentication is required (only public repositories are used).
-
-Running the Application
-
-Start the Laravel development server:
-
+### 6.1 Running the Application
+Start the Laravel development server:  
+```bash
 php artisan serve
-
-
-The application will be available at:
-
+```
+The application will be available at:  
+```
 http://localhost:8000
+```
 
-API Endpoint
-Route
+### 6.2 API Endpoint
+```
 GET /{user}/{repository}
+```
 
-Query Parameters
-Parameter	Required	Description
-since	No	Start date (YYYY-MM-DD)
-until	No	End date (YYYY-MM-DD)
+### 6.3 Query Parameters
+| Parameter | Required | Description               |
+|-----------|----------|---------------------------|
+| since     | No       | Start date (YYYY-MM-DD)  |
+| until     | No       | End date (YYYY-MM-DD)    |
 
-Default values
+**Default behavior:**  
+- `since`: 4 weeks before the current date  
+- `until`: current date  
 
-since: 4 weeks ago
-
-until: today
-
-Example Request
+### 6.4 Example Request
+```bash
 curl "http://localhost:8000/facebook/react?since=2024-01-01&until=2024-02-01"
+```
 
-Example Response
+### 6.5 Example Response
+```json
 [
   {
     "week": 1,
     "count": 10,
-    "commits": [
-      {
-        "sha": "abc123",
-        "commit": {
-          "author": {
-            "name": "John Doe",
-            "date": "2024-01-03T10:15:30Z"
-          },
-          "message": "Fix bug"
-        }
-      }
-    ]
+    "commits": []
   },
   {
     "week": 2,
@@ -105,34 +108,60 @@ Example Response
     "commits": []
   }
 ]
+```
 
-Project Structure
+---
 
-Controller
+## 7. Support
 
-Handles HTTP requests and responses
+### 7.1 Support Policy
+This project was created exclusively for a technical interview.  
+No long-term support or maintenance is provided beyond the evaluation process.
 
-Service Layer
+---
 
-Responsible for calling the GitHub API
+## 8. Roadmap
 
-Business Logic
+### 8.1 Planned Improvements
+Given more time, the following improvements could be implemented:
+- GitHub API pagination handling  
+- Rate-limit detection using GitHub response headers  
+- Caching GitHub API responses using Laravel’s cache system  
+- Improved error handling and edge-case validation  
+- Additional unit and feature tests  
 
-Groups commits by calendar week
+---
 
-This structure improves testability and maintainability.
+## 9. Contributing
 
-Testing
+### 9.1 Contribution Policy
+This repository is not open to external contributions.  
+It was created solely for evaluation purposes as part of a technical interview.
 
-Run the test suite with:
+---
 
-php artisan test
+## 10. Authors and Acknowledgment
 
+### 10.1 Author
+Developed by the candidate as part of a technical interview for TLD Group.
 
-Rate limiting and caching were not implemented due to time constraints.
+### 10.2 Acknowledgment
+- GitHub REST API documentation  
+- Laravel official documentation  
 
-To improve this project, GitHub API rate-limit headers could be handled to detect when the limit is reached and return a proper error response, or by using an authenticated GitHub token to increase the allowed number of requests. In addition, Laravel’s cache system could be used to cache GitHub API responses based on the repository and date range, reducing the number of external API calls and improving performance.
+---
 
-Author
+## 11. License
 
-Kaushal Hirani
+### 11.1 Licensing
+No license is applied to this project.  
+The code is provided strictly for interview evaluation purposes and is not intended for reuse or redistribution.
+
+---
+
+## 12. Project Status
+
+### 12.1 Current State
+The project is considered complete within the scope of the technical interview.  
+Further development was intentionally limited to respect the time constraints of the exercise.
+
